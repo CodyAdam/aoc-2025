@@ -1,4 +1,4 @@
-IN = open("./in.txt", "r").read().splitlines()
+IN = open("./2.txt", "r").read().splitlines()
 
 
 def is_invalid_divided_by(x, divider):

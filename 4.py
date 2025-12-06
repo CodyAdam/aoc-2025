@@ -1,6 +1,6 @@
 from collections import Counter
 
-IN = open("./in.txt", "r").read().splitlines()
+IN = open("./4.txt", "r").read().splitlines()
 W = len(IN[0])
 H = len(IN)
 

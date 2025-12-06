@@ -1,4 +1,4 @@
-IN = open("./in.txt", "r").read().splitlines()
+IN = open("./3.txt", "r").read().splitlines()
 
 res = 0
 for line in IN:

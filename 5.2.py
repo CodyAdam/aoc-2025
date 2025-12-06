@@ -1,4 +1,4 @@
-RANGE, FOOD = open("./in.txt", "r").read().split("\n\n")
+RANGE, FOOD = open("./5.txt", "r").read().split("\n\n")
 RANGE, FOOD = RANGE.splitlines(), FOOD.splitlines()
 
 ranges = set([tuple(map(int, r.split("-"))) for r in RANGE])

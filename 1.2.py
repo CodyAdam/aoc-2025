@@ -1,4 +1,4 @@
-IN = open("./in.txt", "r").read().splitlines()
+IN = open("./1.txt", "r").read().splitlines()
 
 current = 50
 result = 0
