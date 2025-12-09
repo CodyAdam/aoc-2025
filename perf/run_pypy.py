@@ -220,8 +220,8 @@ def main():
 
         results.append(day_results)
 
-    # Generate README_PYPY.md
-    readme_path = Path(__file__).parent.parent / "README_PYPY.md"
+    # Generate README.md
+    readme_path = Path(__file__).parent.parent / "README.md"
 
     with open(readme_path, "w") as f:
         f.write("# Advent of Code Benchmarks (PyPy)\n\n")
@@ -250,7 +250,9 @@ def main():
             else:
                 part2_str = format_time(part2)
 
-            f.write(f"| [Day {day}](src/{day}.py) | {part1_str} | {part2_str} |\n")
+            f.write(
+                f"| [Day {day}]({day}.txt) | [{part1_str}]({day}.py) | [{part2_str}]({day}.2.py) |\n"
+            )
 
     print(f"\n✓ Results written to {readme_path}")
 

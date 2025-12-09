@@ -173,6 +173,9 @@ def main():
 
     with open(readme_path, "w") as f:
         f.write("# Advent of Code Benchmarks (CPython)\n\n")
+        f.write(
+            "This is using CPython, an slower version compared to PyPy using in the [README.md](./README.md).\n\n"
+        )
         f.write("## Benchmarks\n\n")
         f.write("| Day | Part 1 | Part 2 |\n")
         f.write("|-----|--------|--------|\n")
@@ -198,7 +201,9 @@ def main():
             else:
                 part2_str = format_time(part2)
 
-            f.write(f"| [Day {day}](src/{day}.py) | {part1_str} | {part2_str} |\n")
+            f.write(
+                f"| [Day {day}]({day}.txt) | [{part1_str}]({day}.py) | [{part2_str}]({day}.2.py) |\n"
+            )
 
     print(f"\n✓ Results written to {readme_path}")
 
