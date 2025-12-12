@@ -14,9 +14,19 @@ for region in IN[-1].splitlines():
     size, counts = region.split(": ")
     w, h = map(int, size.split("x"))
     counts = [int(c) for c in counts.split(" ")]
-    pixels_needed = sum([len(shapes[i]) * counts[i] for i in range(len(counts))])
 
-    if pixels_needed <= w * h:
+    # check obvious invalid cases
+    pixels_needed = sum([len(shapes[i]) * counts[i] for i in range(len(counts))])
+    if pixels_needed > w * h:
+        continue
+
+    # check obvious valid cases
+    shape_needed = sum(counts)
+    if shape_needed <= w // 3 * h // 3:
         valid += 1
+        continue
+
+    # unknown case, this should not happen
+    raise ValueError(f"Unknown case")
 
 print(valid)
