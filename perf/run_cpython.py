@@ -107,24 +107,29 @@ def run_script(script_path):
         os.chdir(original_cwd)
 
 
+import re
+
+dayname_re = re.compile(r"^(\d+)(\.2)?\.py$")
+
+
 def get_day_number(filename):
-    """Extract day number from filename (e.g., '1.py' -> 1, '1.2.py' -> 1)."""
-    base = filename.stem
-    if "." in base:
-        return int(base.split(".")[0])
-    return int(base)
+    """Extract day number from filename (e.g., '1.py' -> 1, '1.2.py' -> 1). Returns None if pattern doesn't match."""
+    m = dayname_re.match(filename.name)
+    if m:
+        return int(m.group(1))
+    return None
 
 
 def is_part2(filename):
-    """Check if file is part 2 (e.g., '1.2.py')."""
-    return ".2" in filename.stem
+    """Check if file is part 2 (e.g., '1.2.py'). False if pattern doesn't match."""
+    m = dayname_re.match(filename.name)
+    return bool(m and m.group(2))
 
 
 def main():
-    # Find all Python scripts in src directory
-    scripts = sorted(
-        src_dir.glob("*.py"), key=lambda p: (get_day_number(p), is_part2(p))
-    )
+    # Only consider files matching "<number>.py" or "<number>.2.py"
+    scripts = [p for p in src_dir.glob("*.py") if get_day_number(p) is not None]
+    scripts = sorted(scripts, key=lambda p: (get_day_number(p), is_part2(p)))
 
     # Group scripts by day
     days = defaultdict(dict)
