@@ -105,15 +105,6 @@ for region in IN[-1].splitlines():
             f"{RED}INVALID{RESET}, pixels needed > grid size", pixels_needed, ">", w * h
         )
         continue
-    if blocks_needed < w // 3 * h // 3:
-        print(
-            f"{GREEN}VALID{RESET}, blocks needed < grid size",
-            blocks_needed,
-            "<",
-            w // 3 * h // 3,
-        )
-        valid += 1
-        continue
 
     grid = {}
     cursor = (0, 0)
